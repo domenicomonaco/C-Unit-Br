@@ -1,0 +1,18 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void stampa(char out[]);
+
+int main(void) {
+	char out = "Hallo world \0";
+
+	stampa(out[]);
+
+	return EXIT_SUCCESS;
+}
+
+void stampa (char out[]) {
+	char out[];
+	printf('%s', out[]);
+}

@@ -1,0 +1,9 @@
+
+**** Build of configuration Debug for project helloword ****
+
+make all 
+Building file: ../src/helloword.c
+Invoking: GCC C Compiler
+gcc -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/helloword.d" -MT"src/helloword.d" -o"src/helloword.o" "../src/helloword.c"
+../src/helloword.c:4:24: error: CUnit/base.h: No such file or directory
+make: *** [src/helloword.o] Error 1

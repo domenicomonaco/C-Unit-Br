@@ -1,0 +1,17 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void stampa(char a);
+
+int main(void) {
+	char out = "Hallo world \0";
+
+	stampa(out);
+
+	return EXIT_SUCCESS;
+}
+
+void stampa (char a) {
+	printf('%s', a);
+}

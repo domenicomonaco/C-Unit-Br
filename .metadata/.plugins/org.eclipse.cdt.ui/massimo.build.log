@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project massimo ****
+
+make all 
+Building file: ../src/massimo.c
+Invoking: GCC C Compiler
+gcc -I/opt/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/massimo.d" -MT"src/massimo.d" -o"src/massimo.o" "../src/massimo.c"
+Finished building: ../src/massimo.c
+ 
+Building target: massimo
+Invoking: MacOS X C Linker
+gcc -L/opt/local/lib -L/opt/local/bin -L/opt/local/inlcude -o "massimo"  ./src/massimo.o   -lcunit -lncurses
+Finished building target: massimo
+ 
