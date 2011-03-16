@@ -1,7 +1,8 @@
 /*
  ============================================================================
+ ===================
  Name        : massimo.c
- Author      : 
+ Author      : Domenico Monaco & Michele Chiarello
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
