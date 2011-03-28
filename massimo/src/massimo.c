@@ -11,10 +11,11 @@
   MASSIMO 			OK
   MINIMO 			OK
 
-  SOMMA
-  SOTRAZIONE
+  SOMMA				OK
+  SOTRAZIONE		OK
 
   PRODOTTO 			OK
+  DIVISIONE			DA TESTARE
   SIGN 				OK
 
   FATTORIZAZIONE 	OK
@@ -25,16 +26,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "CUnit/basic.h"
-#include <math.h>
 
-//Declaration functions
-int massimo(int a, int b);
-int minimo(int a, int b);
-int fattoriale(int a);
-int signof(int a);
-int prodotto(int a, int b);
-int somma(int a, int b);
-int sottrazione(int a, int b);
+#include "matematica.h"
 
 //Decalaration of Test Functions
 void test_massimo();
@@ -42,6 +35,7 @@ void test_minimo();
 void test_fattoriale();
 void test_signof();
 void test_prodotto(void);
+void test_divisione(void);
 void test_somma(void);
 void test_sottrazione(void);
 
@@ -65,6 +59,13 @@ int main(void) {
 	CU_TestInfo test_array_somma[] = {
 			{ "test di somma()", test_somma },
 			CU_TEST_INFO_NULL, };
+
+	//TEST ARRAY
+	/* Test Arrays - NOTA Ð LÕORDINE EÕ IMPORTANTE */
+	CU_TestInfo test_array_divisione[] = {
+			{ "test di divisione()", test_divisione },
+			CU_TEST_INFO_NULL, };
+
 	//TEST ARRAY
 	/* Test Arrays - NOTA Ð LÕORDINE EÕ IMPORTANTE */
 	CU_TestInfo test_array_sottrazione[] = {
@@ -127,11 +128,17 @@ int main(void) {
 					suite_void_cleanup,
 					test_array_signof
 			},
-			{
+			/*{
 					"test suite Prodotto",
 					suite_void_init,
 					suite_void_cleanup,
 					test_array_prodotto
+			},*/
+			{
+					"test suite Divisione",
+					suite_void_init,
+					suite_void_cleanup,
+					test_array_divisione
 			},
 			{
 					"test suite Somma",
@@ -169,113 +176,10 @@ int main(void) {
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();
 
+
+	float c= divisione(45,254);
+	printf("risultato diviosne: %f",c);
 	return EXIT_SUCCESS;
-}
-
-/**
- * Implementation of function to calculate Sign of integer
- * @param: int a
- * @output: -1 or 1
- */
-int signof(int a){
-	int sign;
-
-	if(a<0){
-		sign = -1;
-	}else{
-		sign = 1;
-	}
-
-	return sign;
-}
-int fattoriale(int input) {
-	int fattoriale = input;
-
-	if(fabs(input) == 0){
-		fattoriale = 1;
-	}else if(signof(input) == -1){
-		fattoriale = 0;
-	}else{
-		int i;
-		for(i=input; i != 1; i--){
-			fattoriale = fattoriale * (i-1);
-		}
-	}
-	return fattoriale;
-}
-
-int massimo(int a, int b) {
-
-	int max = 0; //stage output variable
-
-	//Check Max number betwen inputs
-	if (a > b) {
-		//assign a as max
-		max = a;
-	} else {
-		//assign b as max
-		max = b;
-	}
-
-	return max;
-}
-
-int minimo(int a, int b) {
-	int min = 0;
-	if (a < b) {
-		min = a;
-	} else {
-		min = b;
-	}
-	return min;
-}
-
-int prodotto(int a, int b){
-	int prodotto = fabs(a);
-
-	int i;
-	for(i=1;i!=fabs(b);i++){
-		prodotto = prodotto + fabs(a);
-	}
-
-	int sign_a = signof(a);
-	int sign_b = signof(b);
-	prodotto = prodotto * (sign_a * sign_b);
-
-	return prodotto;
-}
-
-
-int somma(int a, int b){
-	int i;
-	int somma = a;
-	int sign_b = signof(b);
-
-	for(i = fabs(b); i !=0; i--){
-		if(sign_b==-1){
-			somma--;
-		}else{
-			somma++;
-		}
-	}
-
-	return somma;
-}
-
-int sottrazione(int a, int b){
-	int i;
-	int sottrazione = a;
-	int sign_b = signof(b);
-
-	for(i = fabs(b); i !=0; i--){
-		if(sign_b==-1){
-			sottrazione++;
-		}else{
-			sottrazione--;
-		}
-	}
-
-	return sottrazione;
 }
 
 
@@ -285,6 +189,7 @@ void test_massimo(void) {
 	CU_ASSERT(massimo(0, -2) == 0);
 	CU_TEST(massimo(2, 2) == 2);
 }
+
 void test_minimo(void) {
 	CU_ASSERT_EQUAL(minimo(1, 10), 1); // DUE NUMERI POSITIVI
 
@@ -303,9 +208,6 @@ void test_fattoriale(void) {
 
 	CU_ASSERT_EQUAL(fattoriale(2), 2); //caso di numero intero con 2 ma nell'implementazione pu˜ essere un problema
 	CU_ASSERT_EQUAL(fattoriale(3), 6); //Caso classico 13
-	//Errore
-	//CU_ASSERT_EQUAL(fattoriale(13), 6227020800); //caso classico con un numero grande come risultato
-	//errore
 
 	CU_ASSERT_EQUAL(fattoriale(-0), 1); //caso strano con -0 zero
 
@@ -332,6 +234,20 @@ void test_prodotto(void) {
 
 }
 
+void test_divisione(void) {
+
+	CU_ASSERT_EQUAL(divisione(1,1), 1);
+	CU_ASSERT_EQUAL(divisione(0,1), 0);
+
+	CU_ASSERT_EQUAL(divisione(15,5), 3);
+	CU_ASSERT_EQUAL(divisione(27,3), 9);
+
+	CU_ASSERT_EQUAL(divisione(45,8), 5.625);
+
+	CU_ASSERT(divisione(190,23) >= 8.260869 && divisione(190,23) <= 8.26087); //errore se ometto  && divisione(190,23) <= 8.26087
+	CU_ASSERT(divisione(45,254) >= 0.177165 && divisione(45,254) <= 0.17717);
+
+}
 
 void test_somma(void) {
 	CU_ASSERT_EQUAL(somma(1,1), 2); //positivo + Positivo
