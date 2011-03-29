@@ -1,7 +1,7 @@
 src/massimo.d src/massimo.o: ../src/massimo.c \
   /opt/local/include/CUnit/basic.h /opt/local/include/CUnit/CUnit.h \
   /opt/local/include/CUnit/CUError.h /opt/local/include/CUnit/TestDB.h \
-  /opt/local/include/CUnit/TestRun.h ../src/matematica.h
+  /opt/local/include/CUnit/TestRun.h ../src/matematica_function.h
 
 /opt/local/include/CUnit/basic.h:
 
@@ -13,4 +13,4 @@ src/massimo.d src/massimo.o: ../src/massimo.c \
 
 /opt/local/include/CUnit/TestRun.h:
 
-../src/matematica.h:
+../src/matematica_function.h:

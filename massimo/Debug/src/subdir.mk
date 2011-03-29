@@ -5,15 +5,15 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/massimo.c \
-../src/matematica.c 
+../src/matematica_function.c 
 
 OBJS += \
 ./src/massimo.o \
-./src/matematica.o 
+./src/matematica_function.o 
 
 C_DEPS += \
 ./src/massimo.d \
-./src/matematica.d 
+./src/matematica_function.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
