@@ -9,3 +9,6 @@
  Description : Prototipi procedure di test per le procedure matematiche_proc_point
 
 **/
+
+void test_inverti(void);
+void test_summ_p(void);

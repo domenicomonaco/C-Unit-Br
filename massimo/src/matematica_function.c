@@ -74,11 +74,6 @@ int minimo(int a, int b) {
 	return min;
 }
 
-int isinteger(float input) {
-	int output;
-
-	return output;
-}
 
 /**
  * if A is mul of B
@@ -94,6 +89,7 @@ int ismul(int a, int b) {
 	int digit = isdigit(str[0]);
 
 	return digit;
+
 
 	//	return result;
 }
@@ -113,6 +109,7 @@ float divisione(int dividendo, int divisore) {
 			return quoziente = 1;
 
 		} else if (divisore != dividendo) {
+
 
 			//caso in cui b<a, b  contenuto almeno 1 volta in a
 			//quoziente  > 1
@@ -155,6 +152,7 @@ float primalita(int input) {
 	// Non completa
 
 	float isprim;
+
 
 	// Il pi piccolo numero primo  2;
 	// tutti gli altri sono dispari,
@@ -225,22 +223,20 @@ int sottrazione(int a, int b) {
 	return sottrazione;
 }
 
-void inverti(int * a, int * b) {
-	int t = *a;
+//Check if is integer
+// i % split == 0
 
-	*a = *b;
-	*b = t;
+int isinteger(float n) {
+	int output;
+
+	int m = (int) n;
+
+	if (m == n) {
+		output = 1;
+	} else {
+		output = 0;
+	}
+
+	return output;
 }
 
-int* summ(int a, int b) {
-	int* sum = NULL;
-	sum = (int*) malloc(sizeof(int));
-	if (sum != NULL)
-		*sum = a + b;
-	return sum;
-}
-
-void summ_p(int const *a, int const *b, int *result) {
-	*result = *a + *b;
-
-}

@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "CUnit/basic.h"
+
 #include <math.h>
 
 //Declaration functions
@@ -20,6 +20,7 @@ int minimo(int a, int b);
 
 int fattoriale(int a);
 int signof(int a);
+int isinteger(float n);
 
 int prodotto(int a, int b);
 float divisione(int dividendo, int divisore);
@@ -31,12 +32,5 @@ int sottrazione(int a, int b);
 float primalita(int input);
 int ismul(int a, int b);
 int isinteger(float input);
-
-//Pinters
-void inverti(int * a, int * b);
-
-//POIONTER
-int* summ(int a, int b);
-void summ_p(int *a, int *b, int *result);
 
 #endif

@@ -20,7 +20,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-//prototipi di matematica_proc_point.c
 
+void inverti(int * a, int * b);
+int* summ(int a, int b);
+void summ_p(int *a, int *b, int *result);
+
+//divisori di n
+void divisori_p(int n, int *divisori[]);
 
 #endif
