@@ -1,0 +1,18 @@
+	char* a;
+	a = "Ciao Domenico Monaco";
+	
+	char a[] = "Ciao Domenico Monaco";
+	
+	1)differenza tra le due diciture
+	-> entrambe sono interpretate correttamente dalla funzione
+	int nome(const char *str)
+	
+	Ma strtok chiede esplicitamente la seconda dicitura, perchè? ...
+	
+	Non rappresentano entrambe un puntatore al primo carattere?
+	
+	2) Perchè 
+	
+	while(array[i] != NULL) i++;
+	return i;
+	}

@@ -12,13 +12,39 @@
 #include <string.h>
 
 #include "CUnit/Basic.h"
+
 #include "vettori.h"
+
+#define MAX 5
 
 /**
  * Aggiungere tutti i metodi di test per le funzioni da testare
  */
-void test_xyz(void) {
-	// TODO
+
+/*
+ * @desc: Test per "conta_parole_bis" che fa uso della funzione di splitting
+ */
+void test_conta_parole_bis(void) {
+	char a[] = "Ciao";
+	int b = conta_parole_bis(a);
+	CU_ASSERT(b==1);
+
+	char c[] = "ciao come va";
+	b = conta_parole_bis(c);
+	CU_ASSERT(b==3);
+
+	char d[] = "ciao come va , # - * + @ ! £ $ % & / ( ) = ? ' ";
+	b = conta_parole_bis(d);
+	CU_ASSERT(b==3);
+
+	char e[] = "ciao come va , # - * + @ ! £ $ %Domenico & / ( ) = ? ' ";
+	b = conta_parole_bis(e);
+	CU_ASSERT(b==4);
+
+}
+
+void test_array_max(void) {
+
 }
 
 /**
@@ -40,15 +66,16 @@ int main(int argc, char *argv[]) {
 	 * Definizione dei test array
 	 * NOTA ? L?ORDINE DI INSERIMENTO E? IMPORTANTE
 	 */
-	CU_TestInfo test_array_dummy[] = { { "test di xyz()", test_xyz },
+	CU_TestInfo test_array_conta_parole_bis[] = { {
+			"test di conta_parole_bis()", test_conta_parole_bis },
 			CU_TEST_INFO_NULL, };
 
 	/**
 	 * crea le suite e vi aggiunge i test array
 	 * NOTA ? L?ORDINE DI INSERIMENTO E? IMPORTANTE
 	 */
-	CU_SuiteInfo suites[] = { { "test suite per ... ", suite_void_init,
-			suite_void_cleanup, test_array_dummy },
+	CU_SuiteInfo suites[] = { { "test suite per conta_parole_bis ",
+			suite_void_init, suite_void_cleanup, test_array_conta_parole_bis },
 
 	CU_SUITE_INFO_NULL, };
 
@@ -77,59 +104,11 @@ int main(int argc, char *argv[]) {
 
 	/**
 	 * Pulisce il registro e termina lo unit test
-	 */
+	 **/
+
 	CU_cleanup_registry();
+
 	//system("PAUSE");
 
-
-	vector_init('\0');
-	//vector_merge();
-	//int c;
-	//char* str="Dkhjh s sd";
-	//c = conta_parole(str);
-	//c = sizeof(*str);
-	//printf("%d", c);
-
-	int* a;
-	int dim;
-
-	printf("Che dimensione?");
-	scanf("%d", &dim);
-
-	a = (int *) calloc(dim, sizeof(int));
-
-	inputarray(a, dim);
-
-	output(a, dim);
-
-	//	int i;
-	//	for (i = 0; i < dim; i++) {
-	//		printf("a[%d]=", i);
-	//		scanf("%d", (a + i));
-	//	}
-
-	//	printf("i valori sono \n");
-	//	for (i = 0; i < dim; i++) {
-	//		printf("a[%d]=%d \n", i, *(a + i));
-	//	}
-
 	return error;
-}
-
-void inputarray(int* a, const int dim) {
-
-	int i;
-	for (i = 0; i < dim; i++) {
-		printf("a[%d]=", i);
-		scanf("%d", (a + i));
-
-	}
-}
-
-void output(const int* a, const int dim) {
-	int i;
-	printf("i valori sono \n");
-	for (i = 0; i < dim; i++) {
-		printf("a[%d]=%d \n", i, *(a + i));
-	}
 }
